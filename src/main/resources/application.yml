@@ -1,5 +1,7 @@
 spring:
   application.name: bills-test
+  flyway:
+    baseline-on-migrate: true
   datasource:
     url: jdbc:postgresql://localhost:5432/bills-db
     username: admin

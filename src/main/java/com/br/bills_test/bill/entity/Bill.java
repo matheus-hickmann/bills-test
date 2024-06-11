@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "bill")
+@Table(name = "BILLS")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Bill {
@@ -20,13 +20,25 @@ public class Bill {
     @Id
     @GeneratedValue
     private Long id;
+
+    @Column(name = "data_vencimento")
     private Date expiringDate;
+
+    @Column(name = "data_pagamento")
     private Date paymentDate;
+
+    @Column(name = "valor")
     private BigDecimal amount;
+
+    @Column(name = "descricao")
     private String description;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "situacao")
     private BillStatus status = BillStatus.OPEN;
+
+    @Column(name = "data_inclusao")
+    private Date creationDate = Date.from(Instant.now());
 
     public Bill(BillStatus billStatus, BigDecimal bigDecimal) {
         this.status = billStatus;
