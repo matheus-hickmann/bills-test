@@ -2,6 +2,7 @@ package com.br.bills_test.bill.entity;
 
 import com.br.bills_test.bill.BillStatus;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name = "bill")
 @NoArgsConstructor
+@AllArgsConstructor
 public class Bill {
 
     @Id
@@ -25,6 +27,11 @@ public class Bill {
 
     @Enumerated(EnumType.STRING)
     private BillStatus status = BillStatus.OPEN;
+
+    public Bill(BillStatus billStatus, BigDecimal bigDecimal) {
+        this.status = billStatus;
+        this.amount = bigDecimal;
+    }
 
     /**
      * Determines if the given expiration date has passed.
